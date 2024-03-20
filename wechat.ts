@@ -136,7 +136,7 @@ export default function WeChat<P extends WeChatProfile>(
 
 	const userinfo: UserinfoEndpointHandler = {
 		url: 'https://api.weixin.qq.com/sns/userinfo',
-		request: async ({ tokens, provider }) => {
+		request: async ({ tokens, provider }: { tokens: any, provider: any }) => {
 			const url = new URL(provider.userinfo?.url!)
 			url.searchParams.set('access_token', tokens.access_token!)
 			url.searchParams.set('openid', String(tokens.openid))
@@ -168,5 +168,5 @@ export default function WeChat<P extends WeChatProfile>(
 		userinfo,
 		profile,
 		options,
-	}
+	} as any
 }
